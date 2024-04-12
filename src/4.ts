@@ -26,11 +26,7 @@
 // Наприклад, ось так:
 
 class Key {
-  private signature: number;
-
-  constructor() {
-    this.signature = Math.random();
-  }
+  private signature: number = Math.random();
 
   getSignature(): number {
     return this.signature;
@@ -38,8 +34,7 @@ class Key {
 }
 
 class Person {
-  private key: Key;
-  constructor(key: Key) {
+  constructor(private key: Key) {
     this.key = key;
   }
 
@@ -49,13 +44,14 @@ class Person {
 }
 
 abstract class House {
-  key: Key;
   door: boolean = false;
   tenants: Person[] = [];
-  constructor(key: Key) {}
+
+  constructor(public key: Key) {}
+
   abstract openDoor(key: Key): void;
 
-  comeIn(person: Person) {
+  comeIn(person: Person): void {
     if (this.door) {
       this.tenants.push(person);
     }
