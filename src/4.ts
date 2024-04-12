@@ -43,19 +43,16 @@ class Person {
     this.key = key;
   }
 
-  getKey() {
+  getKey(): Key {
     return this.key;
   }
 }
 
 abstract class House {
   key: Key;
-  door: boolean;
+  door: boolean = false;
   tenants: Person[] = [];
-  constructor(key: Key) {
-    this.key = key;
-    this.door = false;
-  }
+  constructor(key: Key) {}
   abstract openDoor(key: Key): void;
 
   comeIn(person: Person) {
@@ -66,9 +63,6 @@ abstract class House {
 }
 
 class MyHouse extends House {
-  constructor(key: Key) {
-    super(key);
-  }
   openDoor(key: Key): void {
     if (key.getSignature() === this.key.getSignature()) {
       this.door = true;

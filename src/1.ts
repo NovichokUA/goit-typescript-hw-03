@@ -5,7 +5,11 @@
 */
 
 class Student {
-  constructor(name: string, age: number, grade: string) {}
+  constructor(
+    private name: string,
+    private age: number,
+    public grade: string
+  ) {}
 }
 
 export {};
